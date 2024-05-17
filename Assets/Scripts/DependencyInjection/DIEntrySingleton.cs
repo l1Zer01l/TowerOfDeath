@@ -4,13 +4,15 @@ namespace TowerOfDeath.DI
 {
     public class DIEntrySingleton<T> : DIEntry<T>
     {
-        public DIEntrySingleton(DIContainer container, Func<DIContainer, T> factory) : base(container, factory)
-        {
-        }
-
+        private T _instance;
+        public DIEntrySingleton(DIContainer container, Func<DIContainer, T> factory) : base(container, factory) { }
         public override T Resolve()
         {
-            throw new System.NotImplementedException();
+            if (_instance == null)
+            {
+                _instance = _factory(_container);
+            }
+            return _instance;
         }
     }
 }
