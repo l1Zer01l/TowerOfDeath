@@ -9,6 +9,11 @@ namespace TowerOfDeath.DI
         {
             _container = container;
         }
+
+        public T Resolve<T>()
+        {
+            return ((DIEntry<T>)this).Resolve();
+        }
     }
 
     public abstract class DIEntry<T> : DIEntry
