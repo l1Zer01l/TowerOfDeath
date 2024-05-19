@@ -7,9 +7,9 @@ namespace TowerOfDeath.Services
     {
         public event UnityAction<Scene, LoadSceneMode> SceneLoaded;
 
-        public const string MAIN_MENU_SCENE = "MAIN_MENU_SCENE";
-        public const string BOOTSTRAP_SCENE = "BOOTSTRAP_SCENE";
-        public const string GAMEPLAY_SCENE = "GAMEPLAY_SCENE";
+        public const string MAIN_MENU_SCENE = "MainMenuScene";
+        public const string BOOTSTRAP_SCENE = "BootStrapScene";
+        public const string GAMEPLAY_SCENE = "GamePlayScene";
 
         public SceneService()
         {
