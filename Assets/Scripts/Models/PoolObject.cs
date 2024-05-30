@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace TowerOfDeath
 {
-    public abstract class PoolObject<T> where T : MonoBehaviour
+    public class PoolObjects<T> where T : PoolObject
     {
         public T prefab { get; }
         public Transform parent { get; }
         public bool autoExtend { get; set; }
 
         private List<T> m_pool;
-        public PoolObject(T prefab, int count, Transform parent) : this(prefab, count, parent, false) { }
-        public PoolObject(T prefab, int count, Transform parent, bool autoExtend = false)
+        public PoolObjects(T prefab, int count, Transform parent) : this(prefab, count, parent, false) { }
+        public PoolObjects(T prefab, int count, Transform parent, bool autoExtend = false)
         {
             this.prefab = prefab;
             this.autoExtend = autoExtend;
@@ -22,9 +22,18 @@ namespace TowerOfDeath
         public T GetFreeObject()
         {
             if (HasFreeObject(out var prefab))
+            {
+                prefab.gameObject.SetActive(true);
+                prefab.BaseInitialization();
                 return prefab;
+            }
             if (autoExtend)
-                return CreateObject();
+            {
+                var newPrefab = CreateObject();
+                newPrefab.gameObject.SetActive(true);
+                newPrefab.BaseInitialization();
+                return newPrefab;
+            }
             Debug.Log($"Don't have free pool object type: {typeof(T)}");
             return null;
         }
@@ -32,7 +41,7 @@ namespace TowerOfDeath
 
         public bool HasFreeObject(out T prefab)
         {
-            prefab = m_pool.Find(i => i.gameObject.activeInHierarchy);
+            prefab = m_pool.Find(i => !i.gameObject.activeInHierarchy);
             return prefab != null;
         }
 
@@ -52,5 +61,14 @@ namespace TowerOfDeath
             m_pool.Add(currentPrefab);
             return currentPrefab;
         }
+    }
+
+    public abstract class PoolObject : MonoBehaviour
+    {
+        public void BaseInitialization()
+        {
+            Initialization();
+        }
+        protected abstract void Initialization();
     }
 }
