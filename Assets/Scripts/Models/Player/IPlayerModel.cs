@@ -8,7 +8,7 @@ namespace TowerOfDeath
         event Action<object, bool> isActiveChangedEvent;
         event Action<object, float> speedChangedEvent;
         float speed { get; set; }
-        float health { get; set; }
+        float health { get; }
         bool isActive { get; set; }
         void TakeDamage(float damage);
         void HealthUp(float health);

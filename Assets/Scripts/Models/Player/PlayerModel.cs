@@ -1,5 +1,4 @@
 using System;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace TowerOfDeath
 {
@@ -10,7 +9,7 @@ namespace TowerOfDeath
 
         private bool _isActive;
         
-        public float health { get => _health; set { _health = value; HealthChangedEvent?.Invoke(this, value); }  }
+        public float health { get => _health; private set { _health = value; HealthChangedEvent?.Invoke(this, value); }  }
         public bool isActive { get => _isActive; set { _isActive = value; isActiveChangedEvent?.Invoke(this, value); } }
         public float speed { get => _speed; set { _speed = value; speedChangedEvent?.Invoke(this, value); } }
 
