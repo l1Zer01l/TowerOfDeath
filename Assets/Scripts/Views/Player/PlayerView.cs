@@ -16,7 +16,7 @@ namespace TowerOfDeath
         {
             _animator = GetComponent<Animator>();
         }
-
+        public Vector3 position => transform.position;
         public bool isActive { get; set; }
         public float speed { get; set; }
         public void Move(Vector3 direction)
@@ -28,6 +28,7 @@ namespace TowerOfDeath
 
             if (direction.magnitude != 0)
                 _directionLast = direction;
+            
 
             //TODO: implementation animation player in FSM state machine 
 
@@ -38,6 +39,11 @@ namespace TowerOfDeath
 
             transform.position += direction * speed * Time.deltaTime;
             
+        }
+
+        public void SetAnimationViewFire(Vector3 direction)
+        {
+            _directionLast = direction;
         }
     }
 }

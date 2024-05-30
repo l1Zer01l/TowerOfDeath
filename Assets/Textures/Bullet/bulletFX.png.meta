@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: e8a45627b8332e24c872395afe54f998
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bulletFX_0
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 505
+        width: 1021
+        height: 990
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f07b93c0c2f51e54a8a6a543f4b7cd18
+      internalID: 1340346970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_1
+      rect:
+        serializedVersion: 2
+        x: 4119
+        y: 407
+        width: 1215
+        height: 1186
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ede4a53b67a8a46800db8cacd32a95
+      internalID: 1204754352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_2
+      rect:
+        serializedVersion: 2
+        x: 5581
+        y: 414
+        width: 1359
+        height: 1154
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b44aefdbba9b247ade697389028e5c
+      internalID: 1253434515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_3
+      rect:
+        serializedVersion: 2
+        x: 6981
+        y: 391
+        width: 1258
+        height: 1193
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452bbabc1209f464e99f949f5d5b9260
+      internalID: 1940564838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_6
+      rect:
+        serializedVersion: 2
+        x: 8255
+        y: 454
+        width: 1307
+        height: 1109
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce470a4f3e1947c49be3a9bcad8867c8
+      internalID: -2006256264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_7
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 681
+        width: 648
+        height: 638
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fb8debebe1f564da1369ab137e6c8a
+      internalID: -353614727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bulletFX_8
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 583
+        width: 913
+        height: 834
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b99bf02159ca944a86a35686f070e74
+      internalID: -362605111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      bulletFX_0: 1340346970
+      bulletFX_1: 1204754352
+      bulletFX_10: -1543492978
+      bulletFX_11: 351249853
+      bulletFX_12: -1548865308
+      bulletFX_13: -1243472183
+      bulletFX_14: 1051791694
+      bulletFX_15: -806645759
+      bulletFX_16: -119279417
+      bulletFX_17: 180916402
+      bulletFX_18: -1456132239
+      bulletFX_19: -1993472132
+      bulletFX_2: 1253434515
+      bulletFX_20: 685057363
+      bulletFX_21: -831956128
+      bulletFX_22: -1282106980
+      bulletFX_23: 1078939303
+      bulletFX_24: -708614865
+      bulletFX_25: -1296004345
+      bulletFX_26: 67296068
+      bulletFX_27: -1576658969
+      bulletFX_28: -1930073350
+      bulletFX_29: 1036774383
+      bulletFX_3: 1940564838
+      bulletFX_30: 2136820526
+      bulletFX_31: 90029630
+      bulletFX_32: -232439703
+      bulletFX_33: 910319624
+      bulletFX_34: -1104088301
+      bulletFX_35: 1503362643
+      bulletFX_36: 66279856
+      bulletFX_37: 880454584
+      bulletFX_38: -1300795171
+      bulletFX_39: -132476148
+      bulletFX_4: -1767394012
+      bulletFX_40: -462142986
+      bulletFX_41: -1914663237
+      bulletFX_42: -1991452774
+      bulletFX_43: -1933793105
+      bulletFX_44: -2044108394
+      bulletFX_45: 1424380282
+      bulletFX_46: -1243787369
+      bulletFX_5: -386244821
+      bulletFX_6: -2006256264
+      bulletFX_7: -353614727
+      bulletFX_8: -362605111
+      bulletFX_9: 1583738011
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
