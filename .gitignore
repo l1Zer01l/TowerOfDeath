@@ -56,6 +56,13 @@ ExportedObj/
 # Unity3D generated file on crash reports
 sysinfo.txt
 
+# MyTest
+**/ForTest/
+**/ForTest.meta
+[Aa]ssets/[Ss]cenes/StepanTestScene.unity
+[Aa]ssets/[Ss]cenes/StepanTestScene.unity.meta
+[Aa]ssets/[Ss]cenes/StepanTestScene.meta
+
 # Builds
 *.apk
 *.aab
