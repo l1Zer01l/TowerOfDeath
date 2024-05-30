@@ -57,9 +57,11 @@ ExportedObj/
 sysinfo.txt
 
 # MyTest
-*/ForTest/
-/[Aa]ssets/[Ss]cenes/StepanTestScene.unity
-/[Aa]ssets/[Ss]cenes/StepanTestScene.meta
+**/ForTest/
+**/ForTest.meta
+[Aa]ssets/[Ss]cenes/StepanTestScene.unity
+[Aa]ssets/[Ss]cenes/StepanTestScene.unity.meta
+[Aa]ssets/[Ss]cenes/StepanTestScene.meta
 
 # Builds
 *.apk
