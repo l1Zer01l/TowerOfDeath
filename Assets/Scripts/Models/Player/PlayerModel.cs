@@ -12,24 +12,23 @@ namespace TowerOfDeath
         private float _speed;
         private float _speedFire;
         private bool _isActive;
-        
+        private Vector2 _position;
         public float speedFire { get => _speedFire; private set { _speedFire = value; speedFireChangedEvent?.Invoke(this, value); } }
         public float health { get => _health; private set { _health = value; HealthChangedEvent?.Invoke(this, value); }  }
-        public bool isActive { get => _isActive; set { _isActive = value; isActiveChangedEvent?.Invoke(this, value); } }
-        public float speed { get => _speed; set { _speed = value; speedChangedEvent?.Invoke(this, value); } }
+        public Vector2 position { get => _position; private set { _position = value; positionChangedEvent?.Invoke(this, value); } }
 
         public event Action<object, float> HealthChangedEvent;
-        public event Action<object, bool> isActiveChangedEvent;
-        public event Action<object, float> speedChangedEvent;
         public event Action<object, float> speedFireChangedEvent;
+        public event Action<object, Vector2> positionChangedEvent;
 
-        public PlayerModel(float health, float speed, float speedFire, PoolBulletService poolBulletService)
+        public PlayerModel(Vector2 position, float health, float speed, float speedFire, PoolBulletService poolBulletService)
         {
-            this.speedFire = speedFire;
+            _position = position;
+            _speedFire = speedFire;
             _poolBulletService = poolBulletService;
-            this.health = health;
-            this.speed = speed;
-            isActive = true;
+            _health = health;
+            _speed = speed;
+            _isActive = true;
         }
 
         public void HealthUp(float health)
@@ -39,9 +38,8 @@ namespace TowerOfDeath
             this.health += health;
         }
 
-        public void TakeDamage(BulletView bullet, float damage)
+        public void TakeDamage(float damage)
         {
-            _poolBulletService.RemoveBullet(bullet);
             if (damage < 0)
                 return;
             health -= damage;
@@ -50,15 +48,28 @@ namespace TowerOfDeath
         public void Binded()
         {
             HealthChangedEvent?.Invoke(this, _health);
-            isActiveChangedEvent?.Invoke(this, _isActive);
-            speedChangedEvent?.Invoke(this, _speed);
+            speedFireChangedEvent?.Invoke(this, _speed);
+            positionChangedEvent?.Invoke(this, _position);
         }
 
-        public void Fire(Vector3 position, Vector3 diretion)
+        public void Fire(Vector3 diretion)
         {
             var bullet = _poolBulletService.CreateBullet();
-            bullet.transform.position = position + diretion * 1f;
-            bullet.Fire(diretion, 150);
+            bullet.transform.position = new Vector3(_position.x, _position.y) + diretion * 0.5f;
+            bullet.Fire(diretion, 150, 30);
+        }
+
+        public void Move(Vector2 direction)
+        {
+            if (!_isActive)
+                return;
+            direction.Normalize();
+            position += direction * Time.deltaTime * _speed;
+        }
+
+        public void MoveToPosition(Vector2 direction)
+        {
+            position += direction;
         }
     }
 }

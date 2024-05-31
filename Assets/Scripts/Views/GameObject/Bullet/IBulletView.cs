@@ -4,6 +4,6 @@ namespace TowerOfDeath
 {
     public interface IBulletView : IView
     {
-        void Fire(Vector3 direction, float force);
+        void Fire(Vector2 direction, float force, float damage);
     }
 }

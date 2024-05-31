@@ -24,14 +24,14 @@ namespace TowerOfDeath
             if (HasFreeObject(out var prefab))
             {
                 prefab.gameObject.SetActive(true);
-                prefab.BaseInitialization();
+                prefab.BaseInitialization(this);
                 return prefab;
             }
             if (autoExtend)
             {
                 var newPrefab = CreateObject();
                 newPrefab.gameObject.SetActive(true);
-                newPrefab.BaseInitialization();
+                newPrefab.BaseInitialization(this);
                 return newPrefab;
             }
             Debug.Log($"Don't have free pool object type: {typeof(T)}");
@@ -65,10 +65,10 @@ namespace TowerOfDeath
 
     public abstract class PoolObject : MonoBehaviour
     {
-        public void BaseInitialization()
+        public void BaseInitialization<T>(PoolObjects<T> pool) where T : PoolObject
         {
-            Initialization();
+            Initialization(pool);
         }
-        protected abstract void Initialization();
+        protected abstract void Initialization<T>(PoolObjects<T> pool) where T : PoolObject;
     }
 }
