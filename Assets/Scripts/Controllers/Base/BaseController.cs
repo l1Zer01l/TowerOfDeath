@@ -12,7 +12,7 @@ namespace TowerOfDeath
             BindView(view);
             BindModel(model);
             Bind();
-            model.Binded();
+            model?.Binded();
         }
 
         private void BindView(TView view)

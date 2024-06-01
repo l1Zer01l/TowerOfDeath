@@ -27,6 +27,11 @@ namespace TowerOfDeath.DI
             Register<T>(("", typeof(T)), factory);
         }
 
+        public void Register<T>(Func<DIContainer, T> factory, string key)
+        {
+            Register<T>((key, typeof(T)), factory);
+        }
+
         public T Resolve<T>(string tag = "")
         {
             var key = (tag, typeof(T));
