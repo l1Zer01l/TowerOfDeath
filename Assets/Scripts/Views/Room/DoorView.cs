@@ -5,13 +5,13 @@ namespace TowerOfDeath
     public class DoorView : MonoBehaviour, IView
     {
         [SerializeField] private DoorType _doorType;
-        private CameraView _cameraView;
+        private ICameraController _cameraController;
         private Vector2 _directionCamera;
         private Vector2 _directionPlayer;
-        private PlayerModel _playerModel;
-        public void Initialllization(PlayerModel playerModel, CameraView cameraView)
+        private IPlayerModel _playerModel;
+        public void Initialllization(IPlayerModel playerModel, ICameraController cameraController)
         {
-            _cameraView = cameraView;
+            _cameraController = cameraController;
             _playerModel = playerModel;
         }
 
@@ -39,7 +39,7 @@ namespace TowerOfDeath
                         _directionPlayer = new Vector2(6, 0);
                         break;
                 }
-                _cameraView.Move(_directionCamera);
+                _cameraController.Move(_directionCamera);
                 _playerModel.MoveToPosition(_directionPlayer);
             }
         }

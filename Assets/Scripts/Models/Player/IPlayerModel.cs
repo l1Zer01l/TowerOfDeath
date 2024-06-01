@@ -17,5 +17,6 @@ namespace TowerOfDeath
         void Fire(Vector3 diretion);
 
         void Move(Vector2 direction);
+        void MoveToPosition(Vector2 newPosition);
     }
 }

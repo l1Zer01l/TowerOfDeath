@@ -16,9 +16,8 @@ namespace TowerOfDeath
 
         private List<RoomView> _roomViews;
 
-        private CameraView _cameraView;
-        private PlayerModel _playerModel;
-        private Dictionary<int, TestEnemy> _enemys;
+        private ICameraController _cameraController;
+        private IPlayerModel _playerModel;
         public void Start()
         {
             if (_countRoom > _maxRoom)
@@ -26,12 +25,11 @@ namespace TowerOfDeath
 
             Invoke(nameof(SpawnRoom), 0.3f);
         }
-        public void Initialization(List<RoomView> template, CameraView cameraView, PlayerModel model, Dictionary<int, TestEnemy> enemys)
+        public void Initialization(List<RoomView> template, ICameraController cameraController, IPlayerModel model)
         {
             _roomViews = template;
-            _cameraView = cameraView;
+            _cameraController = cameraController;
             _playerModel = model;
-            _enemys = enemys;
         }
         private void SpawnRoom()
         {
@@ -69,7 +67,8 @@ namespace TowerOfDeath
         private void CreateRoom(RoomView[] template)
         {
             var rand = Random.Range(0, template.Length);
-            Instantiate(template[rand], transform.position, template[rand].transform.rotation).Initialization(_roomViews, _cameraView, _playerModel, _enemys);
+            var room = Instantiate(template[rand], transform.position, template[rand].transform.rotation);
+            room.Initialization(_roomViews, _cameraController, _playerModel);
             _spawned = true;
             _countRoom++;
         }
