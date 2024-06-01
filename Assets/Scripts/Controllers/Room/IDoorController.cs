@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TowerOfDeath
 {
-    public interface ICameraController : IController
+    public interface IDoorController : IController
     {
 
     }

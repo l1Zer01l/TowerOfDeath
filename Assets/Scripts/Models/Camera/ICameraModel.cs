@@ -8,7 +8,7 @@ namespace TowerOfDeath
         event Action<object, Vector2> positionChangedEvent;
 
         Vector2 position { get; }
-
-        void MoveToPosition(Vector2 newPosition);
+        void MoveToPosition(Vector2 direction);
+        void Update();
     }
 }

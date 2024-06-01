@@ -34,18 +34,23 @@ namespace TowerOfDeath
             
             if (enemyController is not null)
             {
-                var fx = Instantiate(_bulletFX, transform);
-                fx.transform.parent = null;
+                CreateFX();
                 enemyController.TakeDamage(this, _damage);
             }
             var wall = collision.gameObject.GetComponent<WallView>();
-            if (wall)
+            var door = collision.gameObject.GetComponent<DoorView>();
+            if (wall || door)
             {
-                var fx = Instantiate(_bulletFX, transform);
-                fx.transform.parent = null;
+                CreateFX();
                 gameObject.SetActive(false);
                 gameObject.transform.parent = _poolBullet.parent;
             }
-        }        
+        }
+
+        private void CreateFX()
+        {
+            var fx = Instantiate(_bulletFX, transform.position + new Vector3(0, 0.5f, 0f), transform.rotation, transform.parent);
+            fx.transform.parent = null;
+        }
     }
 }

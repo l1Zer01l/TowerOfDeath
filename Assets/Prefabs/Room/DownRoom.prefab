@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78872d69de4da6e479279a5c8c90957a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRoomType: 02000000
   _spawnPointViews:
   - {fileID: 9066517092557475198}
-  _doorView:
+  _doorViews:
   - {fileID: 1480125390309966192}
+  _spawnRoomType: 02000000
 --- !u!1 &1347650501328909101
 GameObject:
   m_ObjectHideFlags: 0

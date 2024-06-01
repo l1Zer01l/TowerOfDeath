@@ -3878,11 +3878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78872d69de4da6e479279a5c8c90957a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRoomType: 03000000
   _spawnPointViews:
   - {fileID: 4315727926216161434}
-  _doorView:
+  _doorViews:
   - {fileID: 9145815485722168065}
+  _spawnRoomType: 03000000
 --- !u!1 &6626577238494340302
 GameObject:
   m_ObjectHideFlags: 0

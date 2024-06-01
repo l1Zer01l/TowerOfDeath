@@ -303,17 +303,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78872d69de4da6e479279a5c8c90957a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRoomType: 01000000020000000300000004000000
   _spawnPointViews:
   - {fileID: 9131265175268707741}
   - {fileID: 5122554831701488565}
   - {fileID: 3125208376930336357}
   - {fileID: 3945903907003698864}
-  _doorView:
+  _doorViews:
   - {fileID: 7300242141327392875}
   - {fileID: 2959767823410710590}
   - {fileID: 6729178321054713536}
   - {fileID: 3692105714099138659}
+  _spawnRoomType: 01000000020000000300000004000000
 --- !u!1 &345448537631970684
 GameObject:
   m_ObjectHideFlags: 0
