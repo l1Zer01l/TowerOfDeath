@@ -1,3 +1,4 @@
+using System.Threading;
 using TowerOfDeath.DI;
 using TowerOfDeath.Services;
 using UnityEngine;
@@ -10,7 +11,9 @@ namespace TowerOfDeath.EntryPoints
         private DIContainer _rootContainer;
         private void Start()
         {
-            //TODO: Init Loading Screen       
+            //TODO: Init Loading Screen
+            Thread.Sleep(2000);
+
             Initialization();
         }
 
@@ -29,7 +32,7 @@ namespace TowerOfDeath.EntryPoints
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             var sceneName = scene.name;
-
+            
             if (sceneName.Equals(SceneService.MAIN_MENU_SCENE))
                 LoadMainMenu();
 
@@ -40,7 +43,7 @@ namespace TowerOfDeath.EntryPoints
         private void LoadMainMenu()
         {
             var entryPointMainMenu = GetEntryPoint<EntryPointMainMenu>();
-
+            
             var mainMenuContainer = new DIContainer(_rootContainer);
 
             entryPointMainMenu.Initialization(mainMenuContainer);

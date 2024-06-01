@@ -5,17 +5,13 @@ namespace TowerOfDeath.Services
 {
     public class SceneService
     {
-        public event UnityAction<Scene, LoadSceneMode> SceneLoaded;
+        public event UnityAction<Scene, LoadSceneMode> SceneLoaded { add => SceneManager.sceneLoaded += value; 
+                                                                     remove => SceneManager.sceneLoaded -= value; }
 
         public const string MAIN_MENU_SCENE = "MainMenuScene";
         public const string BOOTSTRAP_SCENE = "BootStrapScene";
         public const string GAMEPLAY_SCENE = "GamePlayScene";
 
-        public SceneService()
-        {
-            SceneManager.sceneLoaded += SceneLoaded;
-        }
-        
         public string GetActiveScene()
         {
             return SceneManager.GetActiveScene().name;
