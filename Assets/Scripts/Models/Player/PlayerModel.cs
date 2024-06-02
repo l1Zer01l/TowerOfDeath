@@ -6,7 +6,7 @@ namespace TowerOfDeath
 {
     public class PlayerModel : IPlayerModel
     {
-        private PoolBulletService _poolBulletService;
+        private PoolService<BulletView> _poolBulletService;
 
         private float _health;
         private float _speed;
@@ -21,13 +21,13 @@ namespace TowerOfDeath
         public event Action<object, float> speedFireChangedEvent;
         public event Action<object, Vector2> positionChangedEvent;
 
-        public PlayerModel(Vector2 position, float health, float speed, float speedFire, PoolBulletService poolBulletService)
+        public PlayerModel(IPlayerModelData data, PoolService<BulletView> poolBulletService)
         {
-            _position = position;
-            _speedFire = speedFire;
+            _position = data.startPosition;
+            _speedFire = data.startSpeedFire;
             _poolBulletService = poolBulletService;
-            _health = health;
-            _speed = speed;
+            _health = data.startHealth;
+            _speed = data.startSpeed;
             _isActive = true;
         }
 

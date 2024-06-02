@@ -21,7 +21,10 @@ namespace TowerOfDeath.DI
         {
             RegisterSingleton<T>(("", typeof(T)), factory);
         }
-
+        public void RegisterSingleton<T>(Func<DIContainer, T> factory, string key)
+        {
+            RegisterSingleton<T>((key, typeof(T)), factory);
+        }
         public void Register<T>(Func<DIContainer, T> factory)
         {
             Register<T>(("", typeof(T)), factory);

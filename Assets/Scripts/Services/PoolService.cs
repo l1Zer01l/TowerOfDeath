@@ -2,25 +2,27 @@ using UnityEngine;
 
 namespace TowerOfDeath.Services
 {
-    public class PoolBulletService
+    public class PoolService<T> where T : PoolObject
+
     {
         private Transform _parent;
-        private PoolObjects<BulletView> _poolBullet;
+        private PoolObjects<T> _poolBullet;
 
-        public PoolBulletService(Transform transform, int poolAmount, bool autoExpand, BulletView prefab)
+        public PoolService(Transform transform, IPoolDataService data)
         {
             _parent = transform;
-            _poolBullet = new PoolObjects<BulletView>(prefab, poolAmount, transform, autoExpand);
+            var prefab = data.prefab.GetComponent<T>();
+            _poolBullet = new PoolObjects<T>(prefab, data.poolAmount, transform, data.isAutoExpand);
         }
 
-        public BulletView CreateBullet()
+        public T CreateBullet()
         {
             var bullet = _poolBullet.GetFreeObject();
             bullet.transform.parent = null;
             return bullet;
         }
 
-        public void RemoveBullet(BulletView bullet)
+        public void RemoveBullet(T bullet)
         {
             bullet.transform.parent = _parent;
             bullet.gameObject.SetActive(false);
