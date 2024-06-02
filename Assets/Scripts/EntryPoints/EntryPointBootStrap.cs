@@ -9,6 +9,7 @@ namespace TowerOfDeath.EntryPoints
     public class EntryPointBootStrap : MonoBehaviour
     {
         private DIContainer _rootContainer;
+        
         private void Start()
         {
             //TODO: Init Loading Screen
@@ -22,7 +23,7 @@ namespace TowerOfDeath.EntryPoints
 
             _rootContainer = new DIContainer();
             _rootContainer.RegisterSingleton(factory => new SceneService());
-
+            
             var sceneService = _rootContainer.Resolve<SceneService>();
             sceneService.SceneLoaded += OnSceneLoaded;
 

@@ -8,7 +8,10 @@ namespace TowerOfDeath
         {
             model.isSpawnedChangedEvent += OnIsSpawnedChanged;
         }
-
+        protected override void UnBind()
+        {
+            model.isSpawnedChangedEvent -= OnIsSpawnedChanged;
+        }
         public void Start()
         {
             Invoke(nameof(Spawn), 0.3f);

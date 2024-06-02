@@ -15,6 +15,12 @@ namespace TowerOfDeath
             view.continueGame.onClick.AddListener(ContinueGame);
         }
 
+        protected override void UnBind()
+        {
+            model.isOpenPauseMenuChangedEvent -= OnIsOpenPauseMenu;
+            model.isOpenSettingsChangedEvent -= OnIsOpenSettings;
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))

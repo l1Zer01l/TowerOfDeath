@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using TowerOfDeath.DI;
 using TowerOfDeath.Services;
@@ -12,13 +11,13 @@ namespace TowerOfDeath
         private static int _maxRoom = 20;
         private static int _countRoom;
 
-        private List<RoomView> _roomViews;
+        private RoomTemplate _template;
         private DIContainer _container;
         private bool _isSpawned;
 
-        public SpawnPointModel(List<RoomView> roomViews, DIContainer container)
+        public SpawnPointModel(RoomTemplate template, DIContainer container)
         {
-            _roomViews = roomViews;
+            _template = template;
             _container = container;
             _isSpawned = false;
         }
@@ -45,22 +44,22 @@ namespace TowerOfDeath
             {
                 case SpawnRoomType.RoomWithDownDoor:
                 {
-                    template = _roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithDownDoor)).ToArray();
+                    template = _template.roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithDownDoor)).ToArray();
                     break;
                 }
                 case SpawnRoomType.RoomWithUpDoor:
                 {
-                    template = _roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithUpDoor)).ToArray();
+                    template = _template.roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithUpDoor)).ToArray();
                     break;
                 }
                 case SpawnRoomType.RoomWithLeftDoor:
                 {
-                    template = _roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithLeftDoor)).ToArray();
+                    template = _template.roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithLeftDoor)).ToArray();
                     break;
                 }
                 case SpawnRoomType.RoomWithRightDoor:
                 {
-                    template = _roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithRightDoor)).ToArray();
+                    template = _template.roomViews.Where(room => room.spawnRoomType.Contains(SpawnRoomType.RoomWithRightDoor)).ToArray();
                     break;
                 }
             }

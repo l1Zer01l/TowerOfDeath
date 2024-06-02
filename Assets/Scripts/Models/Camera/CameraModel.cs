@@ -11,11 +11,11 @@ namespace TowerOfDeath
         public Vector2 position { get => _position; private set { _position = value; positionChangedEvent?.Invoke(this, value); } }
 
         public event Action<object, Vector2> positionChangedEvent;
-        public CameraModel(Vector2 position, float smoothSpeed)
+        public CameraModel(ICameraDataModel data)
         {
-            _position = position;
-            _newPosition = position;
-            _smoothSpeed = smoothSpeed;
+            _position = data.startPosition;
+            _newPosition = data.startPosition;
+            _smoothSpeed = data.smoothSpeed;
         }
 
         public void Binded()

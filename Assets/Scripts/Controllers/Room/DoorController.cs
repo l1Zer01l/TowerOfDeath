@@ -8,7 +8,10 @@ namespace TowerOfDeath
         {
             
         }
+        protected override void UnBind()
+        {
 
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var player = collision.GetComponent<PlayerView>();

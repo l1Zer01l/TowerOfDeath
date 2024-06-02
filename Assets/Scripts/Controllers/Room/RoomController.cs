@@ -9,7 +9,10 @@ namespace TowerOfDeath
         {
             
         }
-
+        protected override void UnBind()
+        {
+            
+        }
         public void Initialization(DIContainer container)
         {
             foreach (var point in view.spawnPointViews)
@@ -23,5 +26,7 @@ namespace TowerOfDeath
                 doorController.Bind(door, container.Resolve<DoorModel>());
             }
         }
+
+        
     }
 }

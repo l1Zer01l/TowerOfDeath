@@ -7,12 +7,18 @@ namespace TowerOfDeath
         protected TView view;
         protected TModel model;
         protected abstract void Bind();
+        protected abstract void UnBind();
         public void Bind(TView view, TModel model)
         {
             BindView(view);
             BindModel(model);
             Bind();
             model?.Binded();
+        }
+
+        private void OnDestroy()
+        {
+            UnBind();
         }
 
         private void BindView(TView view)

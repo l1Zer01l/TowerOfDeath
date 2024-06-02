@@ -1,3 +1,4 @@
+using System.Threading;
 using TowerOfDeath.DI;
 using TowerOfDeath.Services;
 using UnityEngine;
@@ -7,6 +8,10 @@ namespace TowerOfDeath.EntryPoints
     public class EntryPointGamePlay : MonoBehaviour, IEntryPoint
     {
         private DIContainer _container;
+
+        [SerializeField] private CameraView _cameraView;
+        [SerializeField] private CameraDataModel _cameraConfig;
+
         [SerializeField] private PauseMenuView _pauseMenuView;
         [SerializeField] private Transform _loadingScreen;
 
@@ -15,14 +20,17 @@ namespace TowerOfDeath.EntryPoints
         [SerializeField] private Transform _parentPlayerPoolBullet;
         [SerializeField] private PoolDataService _playerPoolData;
 
-
+        [SerializeField] private RoomView _startRoom;
+        [SerializeField] private RoomTemplate _roomTemplate;
         public void Initialization(DIContainer parentContainer)
         {
             _loadingScreen.gameObject.SetActive(true);
             _container = parentContainer;
             _container.RegisterSingleton(factory => new PoolService<BulletView>(_parentPlayerPoolBullet, _playerPoolData), "playerPool");
+            _container.RegisterSingleton(factory => new CameraModel(_cameraConfig));
             RegisterModel(_container);
             RegisterController(_container);
+            GenerateRooms(_container);
             _loadingScreen.gameObject.SetActive(false);
         }
 
@@ -32,7 +40,10 @@ namespace TowerOfDeath.EntryPoints
             container.RegisterSingleton(factory => new PauseMenuModel(sceneService.LoadMainMenu));
 
             container.RegisterSingleton(factory => new PlayerModel(_playerData, container.Resolve<PoolService<BulletView>>("playerPool")));
+            container.Register(factory => new DoorModel(container.Resolve<CameraModel>(), container.Resolve<PlayerModel>()));
+            container.Register(factory => new SpawnPointModel(_roomTemplate, container));
         }
+
         private void RegisterController(DIContainer container)
         {
             var pauseMenuController = ExtentionService.SetupController<PauseMenuController, PauseMenuView>(_pauseMenuView);
@@ -40,6 +51,19 @@ namespace TowerOfDeath.EntryPoints
 
             var playerController = ExtentionService.SetupController<PlayerControlller, PlayerView>(_playerView);
             playerController.Bind(_playerView, container.Resolve<PlayerModel>());
+
+            var cameraController = ExtentionService.SetupController<CameraController, CameraView>(_cameraView);
+            cameraController.Bind(_cameraView, container.Resolve<CameraModel>());
+
         }
+
+        private void GenerateRooms(DIContainer container)
+        {
+            var roomController = ExtentionService.SetupController<RoomController, RoomView>(_startRoom);
+            roomController.Bind(_startRoom, null);
+            roomController.Initialization(container);        
+            Thread.Sleep(1000);
+        }
+
     }
 }

@@ -29,7 +29,10 @@ namespace TowerOfDeath
         {
             model.positionChangedEvent += OnPositionChanged;
         }
-
+        protected override void UnBind()
+        {
+            model.positionChangedEvent -= OnPositionChanged;
+        }
         private void InputMove()
         {
 

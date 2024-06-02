@@ -12,7 +12,10 @@ namespace TowerOfDeath
             view.settingsButton.onClick.AddListener(OpenSettings);
             view.exitSettingsButton.onClick.AddListener(CloseSettings);
         }
-
+        protected override void UnBind()
+        {
+            model.isOpenSettingsChangedEvent -= OnIsOpenSettingsChanged;
+        }
         private void StartGame() 
         {
             model.StartGame();
@@ -34,5 +37,7 @@ namespace TowerOfDeath
         {
             view.isOpenSettings = newValue;
         }
+
+        
     }
 }
