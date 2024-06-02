@@ -7,6 +7,8 @@ namespace TowerOfDeath
     {
         event Action<object, bool> isSpawnedChangedEvent;
         bool isSpawned { get; }
-        void SpawnRoom(SpawnRoomType roomType, Transform transform);
+        void SpawnRoom(SpawnRoomType roomType, Transform transform, Transform parent);
+        void SpawnedCollition();
+        
     }
 }

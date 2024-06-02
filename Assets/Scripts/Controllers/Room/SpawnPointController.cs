@@ -4,6 +4,7 @@ namespace TowerOfDeath
 {
     public class SpawnPointController : BaseController<ISpawnPointView, ISpawnPointModel>, ISpawnPointController
     {
+        private Transform _parentSpawn;
         protected override void Bind()
         {
             model.isSpawnedChangedEvent += OnIsSpawnedChanged;
@@ -14,12 +15,15 @@ namespace TowerOfDeath
         }
         public void Start()
         {
-            Invoke(nameof(Spawn), 0.3f);
+            Invoke(nameof(Spawn), 0.1f);
         }
-
+        public void SetParentSpawn(Transform parent)
+        {
+            _parentSpawn = parent;
+        }
         private void Spawn()
         {
-            model.SpawnRoom(view.spawnRoomType, transform);
+            model.SpawnRoom(view.spawnRoomType, transform, _parentSpawn);
         }
 
         private void OnIsSpawnedChanged(object sender, bool newValue)
@@ -30,9 +34,14 @@ namespace TowerOfDeath
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var spawnPointView = collision.GetComponent<SpawnPointView>();
-            if (spawnPointView && spawnPointView.isSpawned)
+            if (spawnPointView)
             {
-                Destroy(gameObject);
+                if (!spawnPointView.isSpawned && !view.isSpawned)
+                {
+                    model.SpawnRoom(view.spawnRoomType | spawnPointView.spawnRoomType, transform, _parentSpawn);
+                    Destroy(gameObject);
+                }
+                model.SpawnedCollition();
             }
         }
     }

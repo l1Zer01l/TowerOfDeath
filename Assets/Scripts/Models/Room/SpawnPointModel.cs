@@ -31,7 +31,12 @@ namespace TowerOfDeath
             isSpawnedChangedEvent?.Invoke(this, _isSpawned);
         }
 
-        public void SpawnRoom(SpawnRoomType roomType, Transform transform)
+        public void SpawnedCollition()
+        {
+            _isSpawned = true;
+        }
+
+        public void SpawnRoom(SpawnRoomType roomType, Transform transform, Transform parent)
         {
             if (_countRoom > _maxRoom)
                 isSpawned = true;
@@ -64,17 +69,19 @@ namespace TowerOfDeath
                 }
             }
             if (template.Length > 0)
-                CreateRoom(template, transform);
+                CreateRoom(template, transform, parent);
         }
 
-        private void CreateRoom(RoomView[] template, Transform transform)
+        private void CreateRoom(RoomView[] template, Transform transform, Transform parent)
         {
             var rand = UnityEngine.Random.Range(0, template.Length);
-            var room = UnityEngine.Object.Instantiate(template[rand], transform.position, template[rand].transform.rotation);
+            var room = UnityEngine.Object.Instantiate(template[rand], transform.position, template[rand].transform.rotation, parent);
+            var dungeoun = _container.Resolve<DungeounModel>();
+            dungeoun.AddRoom(room);
 
             var roomController = ExtentionService.SetupController<RoomController, RoomView>(room);
             roomController.Bind(room, null);
-            roomController.Initialization(_container);
+            roomController.Initialization(_container, parent);
             isSpawned = true;
             _countRoom++;
         }

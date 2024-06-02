@@ -1,4 +1,5 @@
 using System.Threading;
+using System.Threading.Tasks;
 using TowerOfDeath.DI;
 using TowerOfDeath.Services;
 using UnityEngine;
@@ -22,6 +23,9 @@ namespace TowerOfDeath.EntryPoints
 
         [SerializeField] private RoomView _startRoom;
         [SerializeField] private RoomTemplate _roomTemplate;
+        [SerializeField] private RoomTemplate _roomBossTemplate;
+        [SerializeField] private RoomTemplate _roomGoldTemplate;
+        [SerializeField] private DungeounView _dungeounView;
         public void Initialization(DIContainer parentContainer)
         {
             _loadingScreen.gameObject.SetActive(true);
@@ -31,7 +35,7 @@ namespace TowerOfDeath.EntryPoints
             RegisterModel(_container);
             RegisterController(_container);
             GenerateRooms(_container);
-            _loadingScreen.gameObject.SetActive(false);
+            Invoke(nameof(IsLoaded), 2f);
         }
 
         public void RegisterModel(DIContainer container)
@@ -41,7 +45,11 @@ namespace TowerOfDeath.EntryPoints
 
             container.RegisterSingleton(factory => new PlayerModel(_playerData, container.Resolve<PoolService<BulletView>>("playerPool")));
             container.Register(factory => new DoorModel(container.Resolve<CameraModel>(), container.Resolve<PlayerModel>()));
-            container.Register(factory => new SpawnPointModel(_roomTemplate, container));
+            
+            container.Register(factory => new SpawnPointModel(_roomTemplate, factory));
+
+            container.RegisterSingleton(factory => new DungeounModel(_roomBossTemplate, _roomGoldTemplate));
+
         }
 
         private void RegisterController(DIContainer container)
@@ -55,14 +63,23 @@ namespace TowerOfDeath.EntryPoints
             var cameraController = ExtentionService.SetupController<CameraController, CameraView>(_cameraView);
             cameraController.Bind(_cameraView, container.Resolve<CameraModel>());
 
+            
         }
 
         private void GenerateRooms(DIContainer container)
         {
             var roomController = ExtentionService.SetupController<RoomController, RoomView>(_startRoom);
             roomController.Bind(_startRoom, null);
-            roomController.Initialization(container);        
-            Thread.Sleep(1000);
+            roomController.Initialization(container, _dungeounView.transform);
+
+            var dungeounController = ExtentionService.SetupController<DungeounController, DungeounView>(_dungeounView);
+            dungeounController.Bind(_dungeounView, container.Resolve<DungeounModel>());
+            
+        }
+
+        private void IsLoaded()
+        {
+            _loadingScreen.gameObject.SetActive(false);
         }
 
     }

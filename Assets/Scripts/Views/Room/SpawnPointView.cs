@@ -7,7 +7,7 @@ namespace TowerOfDeath
         
         [SerializeField] private bool _spawned;
         [SerializeField] private SpawnRoomType _spawnRoomType;
-
+            
         public SpawnRoomType spawnRoomType => _spawnRoomType;
         public bool isSpawned { get => _spawned; set => _spawned = value; }
         

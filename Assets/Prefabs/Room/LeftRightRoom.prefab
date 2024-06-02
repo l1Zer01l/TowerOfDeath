@@ -908,7 +908,7 @@ Transform:
   m_GameObject: {fileID: 1831492352518171865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0321607, y: -0.22441578, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -940,6 +940,8 @@ MonoBehaviour:
   - {fileID: 7385231437940775938}
   - {fileID: 5193993502486239247}
   _spawnRoomType: 0300000004000000
+  _isCanBeBoss: 0
+  _canBeGold: 0
 --- !u!1 &1978783534212421658
 GameObject:
   m_ObjectHideFlags: 0
