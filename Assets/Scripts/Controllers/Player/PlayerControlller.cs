@@ -84,34 +84,46 @@ namespace TowerOfDeath
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                _directionFire = Vector2.up;
-                _isFire = true;
+                _directionFire += Vector2.up;
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                _directionFire = Vector2.down;
-                _isFire = true;
+                _directionFire += Vector2.down;
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                _directionFire = Vector2.left;
-                _isFire = true;         
+                _directionFire += Vector2.left;        
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                _directionFire = Vector2.right;
-                _isFire = true;                
+                _directionFire += Vector2.right;               
             }
 
-            if (Input.GetKeyUp(KeyCode.UpArrow) ||
-                Input.GetKeyUp(KeyCode.DownArrow) || 
-                Input.GetKeyUp(KeyCode.LeftArrow) ||
-                Input.GetKeyUp(KeyCode.RightArrow))
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                _directionFire -= Vector2.up;
+            }
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                _directionFire -= Vector2.down;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                _directionFire -= Vector2.left;
+            }
+            if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                _directionFire -= Vector2.right;
+            }
+
+            if (_directionFire.Equals(Vector2.zero))
                 _isFire = false;
+            else
+                _isFire = true;
 
             if (_fireTimer <= model.speedFire)
                 return;
-
+            
             if (_isFire)
             {
                 model.Fire(_directionFire);

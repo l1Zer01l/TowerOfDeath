@@ -3837,6 +3837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5890976816299164607}
   - component: {fileID: 4635360083944467043}
+  - component: {fileID: 7327620405695765989}
   m_Layer: 0
   m_Name: LeftRoom
   m_TagString: Untagged
@@ -3885,6 +3886,51 @@ MonoBehaviour:
   _spawnRoomType: 03000000
   _isCanBeBoss: 1
   _canBeGold: 1
+--- !u!61 &7327620405695765989
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465587916207087063}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.034258842, y: -0.14559841}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.66, y: 7.68}
+    newSize: {x: 13.66, y: 7.68}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16.126616, y: 8.724886}
+  m_EdgeRadius: 0
 --- !u!1 &6626577238494340302
 GameObject:
   m_ObjectHideFlags: 0

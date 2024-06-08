@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPosition: {x: 0, y: 0}
   _startHealth: 5
-  _startSpeedFire: 0.5
+  _startSpeedFire: 0.3
   _startSpeed: 6.5
   _startSpeedBullet: 150
   _startDamageBullet: 20

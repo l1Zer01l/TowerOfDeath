@@ -80,7 +80,7 @@ namespace TowerOfDeath
             dungeoun.AddRoom(room);
 
             var roomController = ExtentionService.SetupController<RoomController, RoomView>(room);
-            roomController.Bind(room, null);
+            roomController.Bind(room, _container.Resolve<RoomModel>());
             roomController.Initialization(_container, parent);
             isSpawned = true;
             _countRoom++;

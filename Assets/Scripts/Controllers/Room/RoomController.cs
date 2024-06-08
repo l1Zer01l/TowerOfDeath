@@ -1,4 +1,3 @@
-using System.Collections;
 using TowerOfDeath.DI;
 using TowerOfDeath.Services;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace TowerOfDeath
     {
         protected override void Bind()
         {
-
+            
         }
         protected override void UnBind()
         {
@@ -28,6 +27,15 @@ namespace TowerOfDeath
                 var doorController = ExtentionService.SetupController<DoorController, DoorView>(door);
                 doorController.Bind(door, container.Resolve<DoorModel>());
             }      
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var playerController = collision.GetComponent<PlayerControlller>();
+            if (playerController)
+            {
+                model.SpawnEnemy(transform);
+            }
         }
     }
 }

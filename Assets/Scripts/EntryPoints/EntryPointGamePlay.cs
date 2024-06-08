@@ -25,7 +25,7 @@ namespace TowerOfDeath.EntryPoints
         [SerializeField] private RoomTemplate _roomGoldTemplate;
         [SerializeField] private DungeounView _dungeounView;
 
-        [SerializeField] private EnemyFlyView _testFlyEnemy;
+        [SerializeField] private EnemyFlyView _prefabFly;
         public void Initialization(DIContainer parentContainer)
         {
             _loadingScreen.gameObject.SetActive(true);
@@ -49,9 +49,9 @@ namespace TowerOfDeath.EntryPoints
             
             container.Register(factory => new SpawnPointModel(_roomTemplate, factory));
 
-            container.Register(factory => new BulletModel());
+            container.Register(factory => new RoomModel(factory, _prefabFly));
 
-            container.Register(factory => new EnemyFlyModel(100, container.Resolve<PoolService<BulletView>>("playerPool")));
+            container.Register(factory => new BulletModel());
 
             container.RegisterSingleton(factory => new DungeounModel(_roomBossTemplate, _roomGoldTemplate));
 
@@ -68,14 +68,12 @@ namespace TowerOfDeath.EntryPoints
             var cameraController = ExtentionService.SetupController<CameraController, CameraView>(_cameraView);
             cameraController.Bind(_cameraView, container.Resolve<CameraModel>());
 
-            var enemyFlyTestController = ExtentionService.SetupController<EnemyFlyController, EnemyFlyView>(_testFlyEnemy);
-            enemyFlyTestController.Bind(_testFlyEnemy, container.Resolve<EnemyFlyModel>());
         }
 
         private void GenerateRooms(DIContainer container)
         {
             var roomController = ExtentionService.SetupController<RoomController, RoomView>(_startRoom);
-            roomController.Bind(_startRoom, null);
+            roomController.Bind(_startRoom, container.Resolve<RoomModel>());
             roomController.Initialization(container, _dungeounView.transform);
 
             var dungeounController = ExtentionService.SetupController<DungeounController, DungeounView>(_dungeounView);

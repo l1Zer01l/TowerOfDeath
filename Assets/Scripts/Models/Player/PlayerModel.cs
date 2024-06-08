@@ -19,6 +19,7 @@ namespace TowerOfDeath
         private DIContainer _container;
 
         private float _health;
+        private float _maxHealth;
         private float _speed;
         private float _speedFire;
         private float _speedBullet;
@@ -34,6 +35,7 @@ namespace TowerOfDeath
             _position = data.startPosition;
             _speedFire = data.startSpeedFire;
             _health = data.startHealth;
+            _maxHealth = data.startHealth;
             _speed = data.startSpeed;
             _speedBullet = data.startSpeedBullet;
             _damageBullet = data.startDamageBullet;
@@ -43,8 +45,9 @@ namespace TowerOfDeath
 
         public void HealthUp(float health)
         {
-            if (health < 0)
+            if (health < 0 || this.health + health > _maxHealth)
                 return;
+
             this.health += health;
         }
 
@@ -64,6 +67,7 @@ namespace TowerOfDeath
 
         public void Fire(Vector3 diretion)
         {
+            diretion.Normalize();
             var bullet = _poolBulletService.Create();
             var bulletController = ExtentionService.SetupController<BulletController, BulletView>(bullet);
             bulletController.Bind(bullet, _container.Resolve<BulletModel>());
