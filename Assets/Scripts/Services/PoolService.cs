@@ -6,26 +6,26 @@ namespace TowerOfDeath.Services
 
     {
         private Transform _parent;
-        private PoolObjects<T> _poolBullet;
+        private PoolObjects<T> _pool;
 
         public PoolService(Transform transform, IPoolDataService data)
         {
             _parent = transform;
             var prefab = data.prefab.GetComponent<T>();
-            _poolBullet = new PoolObjects<T>(prefab, data.poolAmount, transform, data.isAutoExpand);
+            _pool = new PoolObjects<T>(prefab, data.poolAmount, transform, data.isAutoExpand);
         }
 
-        public T CreateBullet()
+        public T Create()
         {
-            var bullet = _poolBullet.GetFreeObject();
-            bullet.transform.parent = null;
-            return bullet;
+            var poolObject = _pool.GetFreeObject();
+            poolObject.transform.parent = null;
+            return poolObject;
         }
 
-        public void RemoveBullet(T bullet)
+        public void Remove(T poolObject)
         {
-            bullet.transform.parent = _parent;
-            bullet.gameObject.SetActive(false);
+            poolObject.transform.parent = _parent;
+            poolObject.gameObject.SetActive(false);
         }
 
     }

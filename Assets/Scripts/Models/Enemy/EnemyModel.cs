@@ -26,7 +26,7 @@ namespace TowerOfDeath
 
         public void TakeDamage(BulletView bullet, float damage)
         {
-            _poolBulletService.RemoveBullet(bullet);
+            _poolBulletService.Remove(bullet);
             if (damage < 0)
                 return;
             health -= damage;

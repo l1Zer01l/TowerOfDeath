@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace TowerOfDeath
@@ -27,10 +26,12 @@ namespace TowerOfDeath
 
         protected override void Bind()
         {
+            model.HealthChangedEvent += OnHealthChanged;
             model.positionChangedEvent += OnPositionChanged;
         }
         protected override void UnBind()
         {
+            model.HealthChangedEvent -= OnHealthChanged;
             model.positionChangedEvent -= OnPositionChanged;
         }
         private void InputMove()
@@ -122,6 +123,11 @@ namespace TowerOfDeath
         private void OnPositionChanged(object sender, Vector2 newValue)
         {
             view.position = new Vector3(newValue.x, newValue.y);
+        }
+
+        private void OnHealthChanged(object sender, float newValue)
+        {
+            view.health = newValue;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TowerOfDeath
 {
@@ -11,13 +12,14 @@ namespace TowerOfDeath
 
         private Animator _animator;
         private Vector2 _directionLast = Vector2.zero;
-
+        [SerializeField] private Image m_healthBar;
         public void Start()
         {
             _animator = GetComponent<Animator>();
         }
 
         public Vector2 position { get => transform.position; set => transform.position = value; }
+        public float health { get => m_healthBar.fillAmount * 5; set => m_healthBar.fillAmount = value / 5; }
 
         public void SetAnimationMove(Vector2 direction)
         {
