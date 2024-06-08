@@ -40,6 +40,8 @@ namespace TowerOfDeath
 
             var room = _rooms.Where(room => room.isCanBeBoss).FirstOrDefault();
             var template = _bossTemplate.roomViews.Where(r => r.spawnRoomType.First().Equals(room.spawnRoomType.First())).FirstOrDefault();
+            if (template is null)
+                return;
             var roomBoss = GameObject.Instantiate(template, room.transform.position, room.transform.rotation, room.transform.parent);
             
             _rooms.Add(roomBoss);
@@ -56,8 +58,10 @@ namespace TowerOfDeath
 
             var room = _rooms.Where(room => room.isCanBeGold).FirstOrDefault();
             var template = _goldTemplate.roomViews.Where(r => r.spawnRoomType.First().Equals(room.spawnRoomType.First())).FirstOrDefault();
-            var roomBoss = GameObject.Instantiate(template, room.transform.position, room.transform.rotation, room.transform.parent);
-            _rooms.Add(roomBoss);
+            if (template is null)
+                return;
+            var roomGold = GameObject.Instantiate(template, room.transform.position, room.transform.rotation, room.transform.parent);
+            _rooms.Add(roomGold);
             _isSpawnedGold = true;
 
             _rooms.Remove(room);

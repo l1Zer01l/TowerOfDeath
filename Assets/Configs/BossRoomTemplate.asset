@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomViews:
   - {fileID: 7570765934746560289, guid: e2ca8f96ae81f9a4e84598ace91cfb75, type: 3}
+  - {fileID: 1311844345519451315, guid: 615325a6bb60ca344be50140c9b4bcb8, type: 3}
+  - {fileID: 5357980603011175874, guid: cfa1751bec8f2434d91ac775775e75e3, type: 3}
+  - {fileID: 5146437951482706189, guid: cb0af60e0170e9e439e983b6a0ec580b, type: 3}
