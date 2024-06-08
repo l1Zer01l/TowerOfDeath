@@ -11,6 +11,8 @@ namespace TowerOfDeath
         private float _health;
         private float _speed;
         private float _speedFire;
+        private float _speedBullet;
+        private float _damageBullet;
         private bool _isActive;
         private Vector2 _position;
         public float speedFire { get => _speedFire; private set { _speedFire = value; speedFireChangedEvent?.Invoke(this, value); } }
@@ -23,11 +25,15 @@ namespace TowerOfDeath
 
         public PlayerModel(IPlayerModelData data, PoolService<BulletView> poolBulletService)
         {
+            _poolBulletService = poolBulletService;
+
             _position = data.startPosition;
             _speedFire = data.startSpeedFire;
-            _poolBulletService = poolBulletService;
             _health = data.startHealth;
             _speed = data.startSpeed;
+            _speedBullet = data.startSpeedBullet;
+            _damageBullet = data.startDamageBullet;
+
             _isActive = true;
         }
 
@@ -56,7 +62,8 @@ namespace TowerOfDeath
         {
             var bullet = _poolBulletService.CreateBullet();
             bullet.transform.position = new Vector3(_position.x, _position.y) + diretion * 0.5f;
-            bullet.Fire(diretion, 150, 30);
+            bullet.transform.localScale = Vector3.one * _damageBullet / 10;
+            bullet.Fire(diretion, _speedBullet, _damageBullet);
         }
 
         public void Move(Vector2 direction)

@@ -16,3 +16,5 @@ MonoBehaviour:
   _startHealth: 5
   _startSpeedFire: 0.5
   _startSpeed: 6.5
+  _startSpeedBullet: 150
+  _startDamageBullet: 20

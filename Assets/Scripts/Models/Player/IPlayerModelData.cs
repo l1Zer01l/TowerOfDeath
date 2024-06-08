@@ -8,5 +8,7 @@ namespace TowerOfDeath
         float startHealth { get; }
         float startSpeed { get; }
         float startSpeedFire { get; }
+        float startSpeedBullet { get; }
+        float startDamageBullet { get; }
     }
 }
